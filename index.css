@@ -1,0 +1,80 @@
+@charset "UTF-8";
+body {
+  margin: 0;
+}
+
+.nav-top {
+  height: 100px;
+  padding: 15px 0;
+  display: flex;
+  align-items: center;
+}
+.nav-top .brand {
+  font-size: 30px;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+.nav-top .brand strong {
+  color: #fff;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 3fr 5fr;
+  grid-template-areas: "sidebar content";
+}
+.main .sidebar {
+  grid-area: sidebar;
+  height: 100vh;
+  background-color: #160F3E;
+  background-image: url("doc/other/topography.svg");
+}
+.main .sidebar .side-mid {
+  margin-top: 50px;
+}
+.main .sidebar .side-mid .img img {
+  margin-right: 25px;
+  padding-top: 15px;
+}
+.main .sidebar .side-mid .date p {
+  color: #B3B3C1;
+}
+.main .sidebar .side-mid .mid {
+  text-align: center;
+}
+.main .sidebar .side-mid .mid .temp {
+  height: 140px;
+}
+.main .sidebar .side-mid .mid .temp .temp-num {
+  font-size: 80px;
+  font-weight: 300;
+}
+.main .sidebar .side-mid .mid .temp .celcius {
+  position: relative;
+  top: -38px;
+  font-size: 32px;
+  font-weight: 300;
+  color: #B3B3C1;
+}
+.main .sidebar .side-mid .mid .temp .celcius:before {
+  content: "°";
+}
+.main .sidebar .side-mid .mid .location {
+  color: #B3B3C1;
+  margin-bottom: 20px;
+}
+.main .sidebar .side-mid .mid .meta-data {
+  color: #B3B3C1;
+}
+.main .sidebar .side-mid .mid .meta-data .temp::after {
+  content: "°";
+}
+.main .sidebar .side-mid .mid .meta-data .middle-dot {
+  margin: 0 10px;
+}
+.main .content {
+  grid-area: content;
+  background-color: #EEF4F6;
+}
+
+/*# sourceMappingURL=index.css.map */

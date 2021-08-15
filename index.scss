@@ -1,0 +1,105 @@
+body {
+  margin: 0;
+}
+
+.nav-top {
+  height: 100px;
+  padding: 15px 0;
+  display: flex;
+  align-items: center;
+
+  .brand {
+    font-size: 30px;
+    font-weight: 300;
+    letter-spacing: 1px;
+
+    strong {
+      color: #fff;
+    }
+  }
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 3fr 5fr;
+  grid-template-areas:
+  "sidebar content";
+
+  .sidebar {
+    grid-area: sidebar;
+    height: 100vh;
+    background-color: #160F3E;
+    background-image: url("doc/other/topography.svg");
+
+    .side-mid {
+      margin-top: 50px;
+
+      .img {
+        img {
+          margin-right: 25px;
+          padding-top: 15px;
+        }
+      }
+
+      .date {
+        p {
+          color: #B3B3C1;
+        }
+      }
+
+      .mid {
+        text-align: center;
+
+        .temp {
+          height: 140px;
+
+          .temp-num {
+            font-size: 80px;
+            font-weight: 300;
+          }
+
+          .celcius {
+            position: relative;
+            top: -38px;
+            font-size: 32px;
+            font-weight: 300;
+            color: #B3B3C1;
+
+            &:before {
+              content: '\00b0';
+            }
+          }
+        }
+
+        .location {
+          color: #B3B3C1;
+          margin-bottom: 20px;
+        }
+
+        .meta-data {
+          color: #B3B3C1;
+          .temp {
+            &::after {
+              content: '\00b0';
+            }
+          }
+          .middle-dot {
+            margin: 0 10px;
+          }
+        }
+      }
+
+
+    }
+
+
+  }
+
+  .content {
+    grid-area: content;
+    background-color: #EEF4F6;
+
+
+  }
+
+}

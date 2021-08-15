@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.0/chart.min.js" integrity="sha512-asxKqQghC1oBShyhiBwA+YgotaSYKxGP1rcSYTDrB0U6DxwlJjU59B67U8+5/++uFjcuVM8Hh5cokLjZlhm3Vg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+</head>
+<body>
+
+<div class="main">
+
+    <div class="sidebar has-text-white">
+        <div class="container is-fluid">
+            <div class="nav-top">
+                <h1 class="brand">Weather <strong>Forecast</strong></h1>
+            </div>
+            <div class="side-mid is-flex is-flex-direction-column is-align-items-center">
+                <div class="top is-flex">
+                    <div class="img">
+                        <img src="./doc/weatherIcons/Drizzleldpi.png" alt=""/>
+                    </div>
+                    <div class="date">
+                        <h1 class="is-size-3">Today</h1>
+                        <p class="subtitle is-size-5">Sat, 3 Aug</p>
+                    </div>
+                </div>
+                <div class="mid ">
+                    <div class="temp">
+                        <span class="temp-num">28</span>
+                        <span class="celcius">c</span>
+                    </div>
+                    <div class="location">
+                        <p>Berlin, Germany</p>
+                    </div>
+                    <div class="meta-data is-flex">
+                        <p class="temp">Feels like 32</p>
+                        <p class="middle-dot">&#9679</p>
+                        <p>Sunset 20:15</p>
+                    </div>
+                </div>
+                <div class="side-bottom ">
+                    <canvas id="weatherChart" width="450" height="130"></canvas>
+                </div>
+            </div>
+            <div class="bottom"></div>
+        </div>
+    </div>
+
+    <div class="content">
+        <input type="text" placeholder="Search new place"/>
+    </div>
+</div>
+
+<script src="chart.js"></script>
+</body>
+</html>

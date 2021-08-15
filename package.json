@@ -1,0 +1,27 @@
+{
+  "name": "weather-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "commonjs",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EmirhakanTanhan/Weather-Api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EmirhakanTanhan/Weather-Api/issues"
+  },
+  "homepage": "https://github.com/EmirhakanTanhan/Weather-Api#readme",
+  "dependencies": {
+    "bulma": "^0.9.3",
+    "chart.js": "^3.5.0"
+  }
+}
