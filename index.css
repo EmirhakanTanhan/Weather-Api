@@ -20,7 +20,7 @@ body {
 
 .main {
   display: grid;
-  grid-template-columns: 3fr 5fr;
+  grid-template-columns: 2fr 5fr;
   grid-template-areas: "sidebar content";
 }
 .main .sidebar {
@@ -75,6 +75,24 @@ body {
 .main .content {
   grid-area: content;
   background-color: #EEF4F6;
+}
+.main .content .nav-top .autoComplete {
+  width: 245px;
+  height: 40px;
+  padding: 6px 15px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+}
+.main .content .content-mid {
+  margin-top: 20px;
+}
+.main .content .content-mid .city-cover img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 30px;
 }
 
 /*# sourceMappingURL=index.css.map */
