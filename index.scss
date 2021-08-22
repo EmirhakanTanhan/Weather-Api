@@ -2,6 +2,12 @@ body {
   margin: 0;
 }
 
+.with-icon{
+  background-repeat: no-repeat;
+  background-position: 15px 11px;
+  background-size: 19px;
+}
+
 .nav-top {
   height: 100px;
   padding: 15px 0;
@@ -21,12 +27,14 @@ body {
 
 .main {
   display: grid;
-  grid-template-columns: 2fr 5fr;
+  grid-template-columns: 2fr 4fr;
   grid-template-areas:
-  "sidebar content";
+  "sidebar main-content";
 
   .sidebar {
     grid-area: sidebar;
+    position: fixed;
+    width: 2fr;
     height: 100vh;
     background-color: #160F3E;
     background-image: url("doc/other/topography.svg");
@@ -51,7 +59,9 @@ body {
         text-align: center;
 
         .temp {
-          height: 140px;
+          display: flex;
+          justify-content: center;
+          padding-left: 27px;
 
           .temp-num {
             font-size: 80px;
@@ -60,10 +70,9 @@ body {
 
           .celcius {
             position: relative;
-            top: -38px;
+            top: 12px;
             font-size: 32px;
             font-weight: 300;
-            color: #B3B3C1;
 
             &:before {
               content: '\00b0';
@@ -78,7 +87,7 @@ body {
 
         .meta-data {
           color: #B3B3C1;
-          .temp {
+          .temp-feels-like {
             &::after {
               content: '\00b0';
             }
@@ -89,19 +98,33 @@ body {
         }
       }
 
-
     }
 
-
+    .side-bottom {
+      margin-top: 135px;
+    }
   }
 
-  .content {
-    grid-area: content;
+  .main-content {
+    grid-area: main-content;
     background-color: #EEF4F6;
-
+    color: #160F3E;
+    min-height: 100vh;
     .nav-top {
 
       .autoComplete {
+        border: none;
+
+        &:focus {
+          outline: none;
+          box-shadow: none;
+        }
+        &:focus + span {
+          color: #aeaeae;
+        }
+      }
+
+      /*.autoComplete {
 
         width: 245px;
         height: 40px;
@@ -110,21 +133,75 @@ body {
         margin-top: 8px;
         margin-right: 16px;
         font-size: 17px;
-      }
+      }*/
     }
 
     .content-mid {
-      margin-top: 20px;
 
       .city-cover {
         img {
           width: 100%;
-          height: 300px;
+          height: 250px;
           object-fit: cover;
-          border-radius: 30px;
+          border-radius: 15px;
+        }
+        h2 {
+          text-align: center;
+          font-size: 19px;
+          font-weight: 400;
+          margin: 3px 0 24px 0;
         }
       }
     }
+
+    .content-bottom {
+
+      .weather-list {
+        /*width: 95%;
+        margin: 20px auto;*/
+
+        .active {
+          background-color: #e3edef;
+        }
+
+        .list-item {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr 3fr;
+          height: 55px;
+          align-items: center;
+          padding-left: 60px;
+          margin-bottom: 5px;
+          border-radius: 15px;
+          transition: 200ms;
+
+          &:hover {
+            background-color: #e3edef;
+          }
+          &:active {
+            background-color: #c6dde5;
+          }
+
+          p {
+            color: #160F3E;
+          }
+
+          .humidity {
+            color: #69696d;
+            img {
+              width: 16px;
+            }
+          }
+
+          .weather-icon {
+            img {
+              display: block;
+              width: 37px;
+            }
+          }
+        }
+      }
+    }
+
   }
 
 }

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Weather Forecast</title>
 
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
@@ -37,30 +37,81 @@
                         <span class="celcius">c</span>
                     </div>
                     <div class="location">
-                        <p>Berlin, Germany</p>
+                        <p>Istanbul, Turkey</p>
                     </div>
                     <div class="meta-data is-flex">
-                        <p class="temp">Feels like 32</p>
+                        <p class="temp-feels-like">Feels like 32</p>
                         <p class="middle-dot">&#9679</p>
                         <p>Sunset 20:15</p>
                     </div>
                 </div>
-                <div class="side-bottom ">
-                    <canvas id="weatherChart" width="450" height="130"></canvas>
-                </div>
             </div>
-            <div class="bottom"></div>
+            <div class="side-bottom">
+                <canvas id="weatherChart" width="450" height="130"></canvas>
+            </div>
         </div>
     </div>
 
-    <div class="content">
-        <div class="container" style="padding-left: 40px; padding-right: 40px;">
+    <div class="main-content">
+        <div class="container" style="padding-left: 60px; padding-right: 60px;">
             <div class="nav-top">
-                <input class="autoComplete" type="text" placeholder="&#xF002; Search" style="font-family:Arial, FontAwesome"/>
+                <div class="field">
+                    <div class="control has-icons-left has-icons-right">
+                        <input class="input autoComplete" type="text" placeholder="Search a place">
+                        <span class="icon is-small is-left"><i class="fas fa-search"></i></span>
+                    </div>
+                </div>
             </div>
             <div class="content-mid">
                 <div class="city-cover">
                     <img src="doc/other/Istanbul.jpg" alt="">
+                    <h2 class="is-centered">Istanbul, Turkey</h2>
+                </div>
+            </div>
+            <div class="content-bottom">
+                <div class="weather-list">
+                    <a class="list-item active">
+                        <p>Sunday</p>
+                        <p class="humidity"><img src="doc/other/drop2-24px.png" alt=""> 54%</p>
+                        <p class="weather-icon"><img src="doc/weatherIcons/Mostly%20Sunnymdpi.png" alt=""></p>
+                        <p>17 Co ------------------------------- 28 Co</p>
+                    </a>
+                    <a class="list-item">
+                        <p>Monday</p>
+                        <p class="humidity"><img src="doc/other/drop2-24px.png" alt=""> 54%</p>
+                        <p class="weather-icon"><img src="doc/weatherIcons/Mostly%20Sunnymdpi.png" alt=""></p>
+                        <p>17 Co ------------------------------- 28 Co</p>
+                    </a>
+                    <a class="list-item">
+                        <p>Tuesday</p>
+                        <p class="humidity"><img src="doc/other/drop2-24px.png" alt=""> 54%</p>
+                        <p class="weather-icon"><img src="doc/weatherIcons/Mostly%20Sunnymdpi.png" alt=""></p>
+                        <p>17 Co ------------------------------- 28 Co</p>
+                    </a>
+                    <a class="list-item">
+                        <p>Wednesday</p>
+                        <p class="humidity"><img src="doc/other/drop2-24px.png" alt=""> 54%</p>
+                        <p class="weather-icon"><img src="doc/weatherIcons/Mostly%20Sunnymdpi.png" alt=""></p>
+                        <p>17 Co ------------------------------- 28 Co</p>
+                    </a>
+                    <a class="list-item">
+                        <p>Thursday</p>
+                        <p class="humidity"><img src="doc/other/drop2-24px.png" alt=""> 54%</p>
+                        <p class="weather-icon"><img src="doc/weatherIcons/Fogmdpi.png" alt=""></p>
+                        <p>17 Co ------------------------------- 28 Co</p>
+                    </a>
+                    <a class="list-item">
+                        <p>Friday</p>
+                        <p class="humidity"><img src="doc/other/drop2-24px.png" alt=""> 54%</p>
+                        <p class="weather-icon"><img src="doc/weatherIcons/Blizzardmdpi.png" alt=""></p>
+                        <p>17 Co ------------------------------- 28 Co</p>
+                    </a>
+                    <a class="list-item">
+                        <p>Saturday</p>
+                        <p class="humidity"><img src="doc/other/drop2-24px.png" alt=""> 54%</p>
+                        <p class="weather-icon"><img src="doc/weatherIcons/Blizzardmdpi.png" alt=""></p>
+                        <p>17 Co ------------------------------- 28 Co</p>
+                    </a>
                 </div>
             </div>
         </div>

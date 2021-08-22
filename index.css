@@ -3,6 +3,12 @@ body {
   margin: 0;
 }
 
+.with-icon {
+  background-repeat: no-repeat;
+  background-position: 15px 11px;
+  background-size: 19px;
+}
+
 .nav-top {
   height: 100px;
   padding: 15px 0;
@@ -20,11 +26,13 @@ body {
 
 .main {
   display: grid;
-  grid-template-columns: 2fr 5fr;
-  grid-template-areas: "sidebar content";
+  grid-template-columns: 2fr 4fr;
+  grid-template-areas: "sidebar main-content";
 }
 .main .sidebar {
   grid-area: sidebar;
+  position: fixed;
+  width: 2fr;
   height: 100vh;
   background-color: #160F3E;
   background-image: url("doc/other/topography.svg");
@@ -43,7 +51,9 @@ body {
   text-align: center;
 }
 .main .sidebar .side-mid .mid .temp {
-  height: 140px;
+  display: flex;
+  justify-content: center;
+  padding-left: 27px;
 }
 .main .sidebar .side-mid .mid .temp .temp-num {
   font-size: 80px;
@@ -51,10 +61,9 @@ body {
 }
 .main .sidebar .side-mid .mid .temp .celcius {
   position: relative;
-  top: -38px;
+  top: 12px;
   font-size: 32px;
   font-weight: 300;
-  color: #B3B3C1;
 }
 .main .sidebar .side-mid .mid .temp .celcius:before {
   content: "°";
@@ -66,33 +75,90 @@ body {
 .main .sidebar .side-mid .mid .meta-data {
   color: #B3B3C1;
 }
-.main .sidebar .side-mid .mid .meta-data .temp::after {
+.main .sidebar .side-mid .mid .meta-data .temp-feels-like::after {
   content: "°";
 }
 .main .sidebar .side-mid .mid .meta-data .middle-dot {
   margin: 0 10px;
 }
-.main .content {
-  grid-area: content;
+.main .sidebar .side-bottom {
+  margin-top: 135px;
+}
+.main .main-content {
+  grid-area: main-content;
   background-color: #EEF4F6;
+  color: #160F3E;
+  min-height: 100vh;
 }
-.main .content .nav-top .autoComplete {
-  width: 245px;
-  height: 40px;
-  padding: 6px 15px;
+.main .main-content .nav-top {
+  /*.autoComplete {
+
+    width: 245px;
+    height: 40px;
+    padding: 6px 15px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 17px;
+  }*/
+}
+.main .main-content .nav-top .autoComplete {
   border: none;
-  margin-top: 8px;
-  margin-right: 16px;
-  font-size: 17px;
 }
-.main .content .content-mid {
-  margin-top: 20px;
+.main .main-content .nav-top .autoComplete:focus {
+  outline: none;
+  box-shadow: none;
 }
-.main .content .content-mid .city-cover img {
+.main .main-content .nav-top .autoComplete:focus + span {
+  color: #aeaeae;
+}
+.main .main-content .content-mid .city-cover img {
   width: 100%;
-  height: 300px;
+  height: 250px;
   object-fit: cover;
-  border-radius: 30px;
+  border-radius: 15px;
+}
+.main .main-content .content-mid .city-cover h2 {
+  text-align: center;
+  font-size: 19px;
+  font-weight: 400;
+  margin: 3px 0 24px 0;
+}
+.main .main-content .content-bottom .weather-list {
+  /*width: 95%;
+  margin: 20px auto;*/
+}
+.main .main-content .content-bottom .weather-list .active {
+  background-color: #e3edef;
+}
+.main .main-content .content-bottom .weather-list .list-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 3fr;
+  height: 55px;
+  align-items: center;
+  padding-left: 60px;
+  margin-bottom: 5px;
+  border-radius: 15px;
+  transition: 200ms;
+}
+.main .main-content .content-bottom .weather-list .list-item:hover {
+  background-color: #e3edef;
+}
+.main .main-content .content-bottom .weather-list .list-item:active {
+  background-color: #c6dde5;
+}
+.main .main-content .content-bottom .weather-list .list-item p {
+  color: #160F3E;
+}
+.main .main-content .content-bottom .weather-list .list-item .humidity {
+  color: #69696d;
+}
+.main .main-content .content-bottom .weather-list .list-item .humidity img {
+  width: 16px;
+}
+.main .main-content .content-bottom .weather-list .list-item .weather-icon img {
+  display: block;
+  width: 37px;
 }
 
 /*# sourceMappingURL=index.css.map */
