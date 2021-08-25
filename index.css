@@ -25,14 +25,15 @@ body {
 }
 
 .main {
+  background-color: #EEF4F6;
   display: grid;
-  grid-template-columns: 2fr 4fr;
+  grid-template-columns: 33.33vw 66.66vw;
   grid-template-areas: "sidebar main-content";
 }
 .main .sidebar {
   grid-area: sidebar;
   position: fixed;
-  width: 2fr;
+  width: 33.3vw;
   height: 100vh;
   background-color: #160F3E;
   background-image: url("doc/other/topography.svg");
@@ -159,6 +160,12 @@ body {
 .main .main-content .content-bottom .weather-list .list-item .weather-icon img {
   display: block;
   width: 37px;
+}
+.main .main-content .content-bottom .weather-list .list-item .weather-icon .sunny {
+  filter: drop-shadow(0 5px 0.5rem orange);
+}
+.main .main-content .content-bottom .weather-list .list-item .weather-icon .cloud {
+  filter: drop-shadow(0 5px 0.5rem #99bad1);
 }
 
 /*# sourceMappingURL=index.css.map */

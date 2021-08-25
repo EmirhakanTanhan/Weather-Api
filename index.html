@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <title>Weather Forecast</title>
 
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.0/chart.min.js"
             integrity="sha512-asxKqQghC1oBShyhiBwA+YgotaSYKxGP1rcSYTDrB0U6DxwlJjU59B67U8+5/++uFjcuVM8Hh5cokLjZlhm3Vg==" crossorigin="anonymous"
             referrerpolicy="no-referrer"></script>
     <script src="https://kit.fontawesome.com/5b41b8a5c6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="index.css">
 
 </head>
 <body>
@@ -57,7 +58,7 @@
             <div class="nav-top">
                 <div class="field">
                     <div class="control has-icons-left has-icons-right">
-                        <input class="input autoComplete" type="text" placeholder="Search a place">
+                        <input id="weatherSearch" class="input autoComplete" type="text" placeholder="Search a place">
                         <span class="icon is-small is-left"><i class="fas fa-search"></i></span>
                     </div>
                 </div>
@@ -73,43 +74,43 @@
                     <a class="list-item active">
                         <p>Sunday</p>
                         <p class="humidity"><img src="doc/other/drop2-24px.png" alt=""> 54%</p>
-                        <p class="weather-icon"><img src="doc/weatherIcons/Mostly%20Sunnymdpi.png" alt=""></p>
+                        <p class="weather-icon"><img class="sunny" src="doc/weatherIcons/Mostly%20Sunnymdpi.png" alt=""></p>
                         <p>17 Co ------------------------------- 28 Co</p>
                     </a>
                     <a class="list-item">
                         <p>Monday</p>
                         <p class="humidity"><img src="doc/other/drop2-24px.png" alt=""> 54%</p>
-                        <p class="weather-icon"><img src="doc/weatherIcons/Mostly%20Sunnymdpi.png" alt=""></p>
+                        <p class="weather-icon"><img class="sunny" src="doc/weatherIcons/Mostly%20Sunnymdpi.png" alt=""></p>
                         <p>17 Co ------------------------------- 28 Co</p>
                     </a>
                     <a class="list-item">
                         <p>Tuesday</p>
                         <p class="humidity"><img src="doc/other/drop2-24px.png" alt=""> 54%</p>
-                        <p class="weather-icon"><img src="doc/weatherIcons/Mostly%20Sunnymdpi.png" alt=""></p>
+                        <p class="weather-icon"><img class="sunny" src="doc/weatherIcons/Mostly%20Sunnymdpi.png" alt=""></p>
                         <p>17 Co ------------------------------- 28 Co</p>
                     </a>
                     <a class="list-item">
                         <p>Wednesday</p>
                         <p class="humidity"><img src="doc/other/drop2-24px.png" alt=""> 54%</p>
-                        <p class="weather-icon"><img src="doc/weatherIcons/Mostly%20Sunnymdpi.png" alt=""></p>
+                        <p class="weather-icon"><img class="sunny" src="doc/weatherIcons/Mostly%20Sunnymdpi.png" alt=""></p>
                         <p>17 Co ------------------------------- 28 Co</p>
                     </a>
                     <a class="list-item">
                         <p>Thursday</p>
                         <p class="humidity"><img src="doc/other/drop2-24px.png" alt=""> 54%</p>
-                        <p class="weather-icon"><img src="doc/weatherIcons/Fogmdpi.png" alt=""></p>
+                        <p class="weather-icon"><img class="cloud" src="doc/weatherIcons/Fogmdpi.png" alt=""></p>
                         <p>17 Co ------------------------------- 28 Co</p>
                     </a>
                     <a class="list-item">
                         <p>Friday</p>
                         <p class="humidity"><img src="doc/other/drop2-24px.png" alt=""> 54%</p>
-                        <p class="weather-icon"><img src="doc/weatherIcons/Blizzardmdpi.png" alt=""></p>
+                        <p class="weather-icon"><img class="cloud" src="doc/weatherIcons/Blizzardmdpi.png" alt=""></p>
                         <p>17 Co ------------------------------- 28 Co</p>
                     </a>
                     <a class="list-item">
                         <p>Saturday</p>
                         <p class="humidity"><img src="doc/other/drop2-24px.png" alt=""> 54%</p>
-                        <p class="weather-icon"><img src="doc/weatherIcons/Blizzardmdpi.png" alt=""></p>
+                        <p class="weather-icon"><img class="cloud" src="doc/weatherIcons/Blizzardmdpi.png" alt=""></p>
                         <p>17 Co ------------------------------- 28 Co</p>
                     </a>
                 </div>
@@ -119,5 +120,8 @@
 </div>
 
 <script src="chart.js"></script>
+<script src="utils.js"></script>
+<script src="autoComplete.js"></script>
+<script src="index.js"></script>
 </body>
 </html>
