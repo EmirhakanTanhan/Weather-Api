@@ -125,16 +125,10 @@ body {
         }
       }
 
-      /*.autoComplete {
-
-        width: 245px;
-        height: 40px;
-        padding: 6px 15px;
-        border: none;
-        margin-top: 8px;
-        margin-right: 16px;
-        font-size: 17px;
-      }*/
+      .dropdown-content {
+        max-height: 15rem;
+        overflow: auto;
+      }
     }
 
     .content-mid {

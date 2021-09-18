@@ -91,18 +91,6 @@ body {
   color: #160F3E;
   min-height: 100vh;
 }
-.main .main-content .nav-top {
-  /*.autoComplete {
-
-    width: 245px;
-    height: 40px;
-    padding: 6px 15px;
-    border: none;
-    margin-top: 8px;
-    margin-right: 16px;
-    font-size: 17px;
-  }*/
-}
 .main .main-content .nav-top .autoComplete {
   border: none;
 }
@@ -112,6 +100,10 @@ body {
 }
 .main .main-content .nav-top .autoComplete:focus + span {
   color: #aeaeae;
+}
+.main .main-content .nav-top .dropdown-content {
+  max-height: 15rem;
+  overflow: auto;
 }
 .main .main-content .content-mid .city-cover img {
   width: 100%;
