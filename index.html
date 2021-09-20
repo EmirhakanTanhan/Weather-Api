@@ -25,14 +25,14 @@
             <div class="side-mid is-flex is-flex-direction-column is-align-items-center">
                 <div class="top is-flex">
                     <div class="img">
-                        <img src="./doc/weatherIcons/Drizzleldpi.png" alt=""/>
+                        <img src="./doc/weatherIcons/Drizzle.png" alt=""/>
                     </div>
                     <div class="date">
                         <h1 class="is-size-3">Today</h1>
-                        <p class="subtitle is-size-5">Sat, 3 Aug</p>
+                        <p class="subtitle is-size-5">3 Aug, 13:00</p>
                     </div>
                 </div>
-                <div class="mid ">
+                <div class="mid">
                     <div class="temp">
                         <span class="temp-num">28</span>
                         <span class="celcius">c</span>
@@ -40,10 +40,20 @@
                     <div class="location">
                         <p>Istanbul, Turkey</p>
                     </div>
-                    <div class="meta-data is-flex">
-                        <p class="temp-feels-like">Feels like 32</p>
+                    <div class="meta-data">
+                        <p class="temp-feels-like" style="justify-self: right">Feels like 32</p>
                         <p class="middle-dot">&#9679</p>
-                        <p>Sunset 20:15</p>
+                        <p style="justify-self: left">Precipitation: 15%</p>
+                    </div>
+                    <div class="meta-data">
+                        <p style="justify-self: right">Humidity: 58%</p>
+                        <p class="middle-dot">&#9679</p>
+                        <p style="justify-self: left">Wind: 6km/h</p>
+                    </div>
+                    <div class="meta-data">
+                        <p style="justify-self: right">Sunrise 06:30</p>
+                        <p class="middle-dot">&#9679</p>
+                        <p style="justify-self: left">Sunset 20:15</p>
                     </div>
                 </div>
             </div>
@@ -70,49 +80,49 @@
                 </div>
             </div>
             <div class="content-bottom">
-                <div class="weather-list">
-                    <a class="list-item active">
+                <div id="tabContent" class="weather-list">
+                    <!--<a class="list-item active">
                         <p>Sunday</p>
                         <p class="humidity"><img src="doc/other/drop2-24px.png" alt=""> 54%</p>
                         <p class="weather-icon"><img class="sunny" src="doc/weatherIcons/Mostly%20Sunnymdpi.png" alt=""></p>
-                        <p>17 Co ------------------------------- 28 Co</p>
+                        <p>17 Co -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; 28 Co</p>
                     </a>
                     <a class="list-item">
                         <p>Monday</p>
                         <p class="humidity"><img src="doc/other/drop2-24px.png" alt=""> 54%</p>
                         <p class="weather-icon"><img class="sunny" src="doc/weatherIcons/Mostly%20Sunnymdpi.png" alt=""></p>
-                        <p>17 Co ------------------------------- 28 Co</p>
+                        <p>17 Co -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; 28 Co</p>
                     </a>
                     <a class="list-item">
                         <p>Tuesday</p>
                         <p class="humidity"><img src="doc/other/drop2-24px.png" alt=""> 54%</p>
                         <p class="weather-icon"><img class="sunny" src="doc/weatherIcons/Mostly%20Sunnymdpi.png" alt=""></p>
-                        <p>17 Co ------------------------------- 28 Co</p>
+                        <p>17 Co -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; 28 Co</p>
                     </a>
                     <a class="list-item">
                         <p>Wednesday</p>
                         <p class="humidity"><img src="doc/other/drop2-24px.png" alt=""> 54%</p>
                         <p class="weather-icon"><img class="sunny" src="doc/weatherIcons/Mostly%20Sunnymdpi.png" alt=""></p>
-                        <p>17 Co ------------------------------- 28 Co</p>
+                        <p>17 Co -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; 28 Co</p>
                     </a>
                     <a class="list-item">
                         <p>Thursday</p>
                         <p class="humidity"><img src="doc/other/drop2-24px.png" alt=""> 54%</p>
                         <p class="weather-icon"><img class="cloud" src="doc/weatherIcons/Fogmdpi.png" alt=""></p>
-                        <p>17 Co ------------------------------- 28 Co</p>
+                        <p>17 Co -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; 28 Co</p>
                     </a>
                     <a class="list-item">
                         <p>Friday</p>
                         <p class="humidity"><img src="doc/other/drop2-24px.png" alt=""> 54%</p>
                         <p class="weather-icon"><img class="cloud" src="doc/weatherIcons/Blizzardmdpi.png" alt=""></p>
-                        <p>17 Co ------------------------------- 28 Co</p>
+                        <p>17 Co -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; 28 Co</p>
                     </a>
                     <a class="list-item">
                         <p>Saturday</p>
                         <p class="humidity"><img src="doc/other/drop2-24px.png" alt=""> 54%</p>
                         <p class="weather-icon"><img class="cloud" src="doc/weatherIcons/Blizzardmdpi.png" alt=""></p>
-                        <p>17 Co ------------------------------- 28 Co</p>
-                    </a>
+                        <p>17 Co -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; 28 Co</p>
+                    </a>-->
                 </div>
             </div>
         </div>

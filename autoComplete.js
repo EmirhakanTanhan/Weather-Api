@@ -35,10 +35,12 @@ const createAutoComplete = ({inputValue}) => {
 
                 const onSelect = async (item) => {
                     const cityLocationInfo = await fetchGeoLocation(item._links['city:item'].href);
-                    console.log(cityInfo);
+                    console.log(cityLocationInfo);
 
                     const weatherData = await fetchWeather_OneCallApi(cityLocationInfo);
                     console.log(weatherData);
+
+                    renderTabComponent(weatherData)
                 }
 
 

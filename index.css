@@ -75,6 +75,9 @@ body {
 }
 .main .sidebar .side-mid .mid .meta-data {
   color: #B3B3C1;
+  padding-bottom: 15px;
+  display: grid;
+  grid-template-columns: 145px 30px 145px;
 }
 .main .sidebar .side-mid .mid .meta-data .temp-feels-like::after {
   content: "°";
@@ -83,7 +86,7 @@ body {
   margin: 0 10px;
 }
 .main .sidebar .side-bottom {
-  margin-top: 135px;
+  margin-top: 55px;
 }
 .main .main-content {
   grid-area: main-content;

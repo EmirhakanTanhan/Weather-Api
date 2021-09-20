@@ -88,6 +88,10 @@ body {
 
         .meta-data {
           color: #B3B3C1;
+          padding-bottom: 15px;
+          display: grid;
+          grid-template-columns: 145px 30px 145px;
+
           .temp-feels-like {
             &::after {
               content: '\00b0';
@@ -102,7 +106,7 @@ body {
     }
 
     .side-bottom {
-      margin-top: 135px;
+      margin-top: 55px;
     }
   }
 
