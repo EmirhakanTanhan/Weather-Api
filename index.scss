@@ -118,6 +118,10 @@ body {
     min-height: 100vh;
     .nav-top {
 
+      #weatherSearchBar {
+        width: 300px;
+      }
+
       .autoComplete {
         border: none;
 

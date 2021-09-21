@@ -24,7 +24,6 @@ const createAutoComplete = ({inputValue}) => {
         items.map((item) => {
             const option = document.createElement('a');
 
-
             option.classList.add('dropdown-item');
             option.innerHTML = `${item.matching_full_name}`;
 

@@ -170,6 +170,8 @@ const renderCurrentComponent = (weatherData, tabNum, inputValue) => {
     const sunset = new Date((currentDay.sunset + weatherData.timezone_offset) * 1000);
     const weather = currentDay.weather[0].id.toString();
 
+    renderChartComponent(weatherData, tabNum);
+
     root.innerHTML = `
         <div class="top is-flex">
             <div class="img">
@@ -207,26 +209,38 @@ const renderCurrentComponent = (weatherData, tabNum, inputValue) => {
             </div>
         </div>
     `
-
-    renderChartComponent(weatherData);
 };
 
-const renderChartComponent = (weatherData) => {
+const renderChartComponent = (weatherData, tabNum) => {
     const root = document.querySelector('#chartComponent');
     const currentDay = new Date((weatherData.current.dt + weatherData.timezone_offset) * 1000);
 
     let labels = [];
-    let oldLabel = currentDay.getUTCHours();
-    for (let i = 0; i < 8; i++) {
-        labels.push(oldLabel.toString().padStart(2, '0') + ':00');
-        oldLabel += 3;
-        if (oldLabel >= 24) oldLabel -= 24;
+    if (tabNum === '0') {
+        let oldLabel = currentDay.getUTCHours();
+
+        for (let i = 0; i < 8; i++) {
+            labels.push(oldLabel.toString().padStart(2, '0') + ':00');
+            oldLabel += 3;
+            if (oldLabel >= 24) oldLabel -= 24;
+        }
+    } else {
+        labels = ['01:00', '04:00', '07:00', '10:00', '13:00', '16:00', '19:00', '22:00'];
     }
 
     let hourlyWeather = [];
-    for (let i = 0; i < 8; i++) {
-        hourlyWeather.push(weatherData.hourly[i*3].temp.toFixed(0));
+    if (tabNum === '0') {
+        for (let i = 0; i < 8; i++) {
+            hourlyWeather.push(weatherData.hourly[i*3].temp.toFixed(0));
+        }
+    } else {
+        const startingIndex = 25 - currentDay.getUTCHours();
+
+        for (let i = 0; i < 8; i++) {
+            hourlyWeather.push(weatherData.hourly[startingIndex + i*3].temp.toFixed(0));
+        }
     }
+
 
     root.innerHTML = `
         <canvas id="weatherChart" width="450" height="130"></canvas>
@@ -264,8 +278,8 @@ const renderChartComponent = (weatherData) => {
             },
             scales: {
                 y: {
-                    // suggestedMin: 10,
-                    // suggestedMax: 28,
+                    suggestedMin: Number(weatherData.daily[tabNum].temp.min.toFixed(0)) - 1,
+                    suggestedMax: Number(weatherData.daily[tabNum].temp.max.toFixed(0)) + 1,
                     ticks: {
                         // forces step size to be 50 units
                         stepSize: 3,

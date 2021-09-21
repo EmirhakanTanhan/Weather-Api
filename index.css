@@ -95,6 +95,9 @@ body {
   color: #160F3E;
   min-height: 100vh;
 }
+.main .main-content .nav-top #weatherSearchBar {
+  width: 300px;
+}
 .main .main-content .nav-top .autoComplete {
   border: none;
 }
