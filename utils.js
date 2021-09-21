@@ -117,6 +117,7 @@ const weatherCases = {
 
 const renderTabComponent = (weatherData) => {
     const root = document.querySelector('#tabContent');
+    const inputValue = document.querySelector('#weatherSearch').value;
 
     console.log(weatherData.daily)
 
@@ -145,18 +146,21 @@ const renderTabComponent = (weatherData) => {
 
     const tabs = document.querySelectorAll('[data-tab]');
 
+    tabs[0].classList.add('tab-active');
+    renderCurrentComponent(weatherData, tabs[0].dataset.tab, inputValue);
+
     tabs.forEach(tab => tab.addEventListener('click', () => {
         tabs.forEach(tab => {
             tab.classList.remove('tab-active');
         });
         tab.classList.add('tab-active');
 
-        renderCurrentComponent(weatherData, tab.dataset.tab)
+        renderCurrentComponent(weatherData, tab.dataset.tab, inputValue)
     }));
 
 };
 
-const renderCurrentComponent = (weatherData, tabNum) => {
+const renderCurrentComponent = (weatherData, tabNum, inputValue) => {
     const root = document.querySelector('#currentComponent');
     const currentDay = weatherData.daily[tabNum];
 
@@ -165,8 +169,6 @@ const renderCurrentComponent = (weatherData, tabNum) => {
     const sunrise = new Date((currentDay.sunrise + weatherData.timezone_offset) * 1000);
     const sunset = new Date((currentDay.sunset + weatherData.timezone_offset) * 1000);
     const weather = currentDay.weather[0].id.toString();
-
-    console.log(currentDay.pop * 100)
 
     root.innerHTML = `
         <div class="top is-flex">
@@ -186,12 +188,12 @@ const renderCurrentComponent = (weatherData, tabNum) => {
                 <span class="celcius">c</span>
             </div>
             <div class="location">
-                <p>${document.querySelector('#weatherSearch').value}</p>
+                <p>${inputValue}</p>
             </div>
             <div class="meta-data">
                 <p class="temp-feels-like" style="justify-self: right">Feels like ${currentDay.feels_like.day.toFixed(0)}</p>
                 <p class="middle-dot">&#9679</p>
-                <p style="justify-self: left">Precipitation: ${currentDay.pop * 100 + '%'}</p>
+                <p style="justify-self: left">Precipitation: ${(currentDay.pop * 100).toFixed(0) + '%'}</p>
             </div>
             <div class="meta-data">
                 <p style="justify-self: right">Humidity: ${currentDay.humidity + '%'}</p>
@@ -206,8 +208,90 @@ const renderCurrentComponent = (weatherData, tabNum) => {
         </div>
     `
 
+    renderChartComponent(weatherData);
 };
 
 const renderChartComponent = (weatherData) => {
+    const root = document.querySelector('#chartComponent');
+    const currentDay = new Date((weatherData.current.dt + weatherData.timezone_offset) * 1000);
 
+    let labels = [];
+    let oldLabel = currentDay.getUTCHours();
+    for (let i = 0; i < 8; i++) {
+        labels.push(oldLabel.toString().padStart(2, '0') + ':00');
+        oldLabel += 3;
+        if (oldLabel >= 24) oldLabel -= 24;
+    }
+
+    let hourlyWeather = [];
+    for (let i = 0; i < 8; i++) {
+        hourlyWeather.push(weatherData.hourly[i*3].temp.toFixed(0));
+    }
+
+    root.innerHTML = `
+        <canvas id="weatherChart" width="450" height="130"></canvas>
+    `
+    const chart = document.getElementById('weatherChart').getContext('2d');
+
+    let weatherChart = new Chart(chart, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: '',
+                data: hourlyWeather,
+                borderColor: 'rgba(248,197,0,1)',
+                fill: true,
+                backgroundColor: 'rgba(248,197,0,0.3)',
+                borderWidth: 2,
+                pointRadius: 0,
+                tension: 0.4,
+            }]
+        },
+        options: {
+            elements: {
+                point: {
+                    hitRadius: 0,
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false,
+                },
+                tooltip: {
+                    enabled: false,
+                },
+            },
+            scales: {
+                y: {
+                    // suggestedMin: 10,
+                    // suggestedMax: 28,
+                    ticks: {
+                        // forces step size to be 50 units
+                        stepSize: 3,
+                        color: '#B3B3C1',
+                        font: {
+                            size: 14,
+                        }
+                    },
+                    grid: {
+                        display: false,
+                        drawBorder: false,
+                    },
+                },
+                x: {
+                    ticks: {
+                        color: '#B3B3C1',
+                        font: {
+                            size: 14,
+                        }
+                    },
+                    grid: {
+                        display: false,
+                        drawBorder: false,
+                    }
+                }
+            }
+        }
+    });
 };
