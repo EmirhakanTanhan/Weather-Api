@@ -42,6 +42,9 @@ const fetchWeather_OneCallApi = async (cityLocation) => {
 };
 
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const monthsShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
 const weatherCases = {
     '2': {
         '200': 'MixRainfall.png',
@@ -113,18 +116,15 @@ const weatherCases = {
 }
 
 const renderTabComponent = (weatherData) => {
-    let root = document.querySelector('#tabContent');
+    const root = document.querySelector('#tabContent');
 
     console.log(weatherData.daily)
-
-
 
     root.innerHTML = `
         ${weatherData.daily.map((item, index) => {
             const day = new Date((item.dt + weatherData.timezone_offset) * 1000);
             
             const weather = item.weather[0].id.toString();
-            console.log(weather === '800')
             let weatherClass = 'cloud';
             if (weather === '800' || weather === '701' || weather === '721' || weather === '731' || weather === '751' || weather === '761' || weather === '762') {
                 weatherClass = 'sunny';
@@ -133,22 +133,81 @@ const renderTabComponent = (weatherData) => {
             return `
             <a class="list-item" data-tab="${index}">
                 <p>${days[day.getUTCDay()]}</p>
-                <p class="humidity"><img src="doc/other/drop2-24px.png"> ${item.humidity}%</p>
-                <p class="weather-icon"><img class="${weatherClass}" src="doc/weatherIcons/${weatherCases[weather.charAt(0)][weather]}"></p>
-                <p>17 Co ------------------------------- 28 Co</p>
+                <p class="humidity" title="Humidity"><img src="doc/other/drop2-24px.png"> ${item.humidity}%</p>
+                <p class="weather-icon" title="${item.weather[0].description.replace(/(^\w|\s\w)/g, m => m.toUpperCase())}">
+                    <img class="${weatherClass}" src="doc/weatherIcons/${weatherCases[weather.charAt(0)][weather]}">
+                </p>
+                <p>${item.temp.min.toFixed(0)} Co ------------------------------- ${item.temp.max.toFixed(0)} Co</p>
             </a>
             `
         }).join('')}
-        
     `;
+
+    const tabs = document.querySelectorAll('[data-tab]');
+
+    tabs.forEach(tab => tab.addEventListener('click', () => {
+        tabs.forEach(tab => {
+            tab.classList.remove('tab-active');
+        });
+        tab.classList.add('tab-active');
+
+        renderCurrentComponent(weatherData, tab.dataset.tab)
+    }));
+
+};
+
+const renderCurrentComponent = (weatherData, tabNum) => {
+    const root = document.querySelector('#currentComponent');
+    const currentDay = weatherData.daily[tabNum];
+
+    const day = new Date((currentDay.dt + weatherData.timezone_offset) * 1000);
+    const currentTime = new Date((weatherData.current.dt + weatherData.timezone_offset) * 1000);
+    const sunrise = new Date((currentDay.sunrise + weatherData.timezone_offset) * 1000);
+    const sunset = new Date((currentDay.sunset + weatherData.timezone_offset) * 1000);
+    const weather = currentDay.weather[0].id.toString();
+
+    console.log(currentDay.pop * 100)
+
+    root.innerHTML = `
+        <div class="top is-flex">
+            <div class="img">
+                <img title="${currentDay.weather[0].description.replace(/(^\w|\s\w)/g, m => m.toUpperCase())}" 
+                    src="doc/weatherIcons/${weatherCases[weather.charAt(0)][weather]}"/>
+            </div>
+            <div class="date">
+                <h1 class="is-size-3">${tabNum === '0' ? 'Today' : days[day.getUTCDay()]}</h1>
+                <p class="subtitle is-size-5">${day.getDate() + ' ' + monthsShort[day.getUTCMonth()] + ', ' + 
+                    currentTime.getUTCHours().toString().padStart(2, '0') + ':' + currentTime.getUTCMinutes().toString().padStart(2, '0')}</p>
+            </div>
+        </div>
+        <div class="mid">
+            <div class="temp">
+                <span class="temp-num">${currentDay.temp.day.toFixed(0)}</span>
+                <span class="celcius">c</span>
+            </div>
+            <div class="location">
+                <p>${document.querySelector('#weatherSearch').value}</p>
+            </div>
+            <div class="meta-data">
+                <p class="temp-feels-like" style="justify-self: right">Feels like ${currentDay.feels_like.day.toFixed(0)}</p>
+                <p class="middle-dot">&#9679</p>
+                <p style="justify-self: left">Precipitation: ${currentDay.pop * 100 + '%'}</p>
+            </div>
+            <div class="meta-data">
+                <p style="justify-self: right">Humidity: ${currentDay.humidity + '%'}</p>
+                <p class="middle-dot">&#9679</p>
+                <p style="justify-self: left">Wind: ${(currentDay.wind_speed * 3.6).toFixed(0) + ' km/h'}</p>
+            </div>
+            <div class="meta-data">
+                <p style="justify-self: right">Sunrise ${sunrise.getUTCHours().toString().padStart(2, '0') + ':' + sunrise.getUTCMinutes().toString().padStart(2, '0')}</p>
+                <p class="middle-dot">&#9679</p>
+                <p style="justify-self: left">Sunset ${sunset.getUTCHours().toString().padStart(2, '0') + ':' + sunset.getUTCMinutes().toString().padStart(2, '0')}</p>
+            </div>
+        </div>
+    `
 
 };
 
 const renderChartComponent = (weatherData) => {
 
 };
-
-const renderCurrentComponent = (weatherData) => {
-
-};
-

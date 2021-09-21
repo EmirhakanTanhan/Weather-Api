@@ -121,10 +121,9 @@ body {
   margin: 3px 0 24px 0;
 }
 .main .main-content .content-bottom .weather-list {
-  /*width: 95%;
-  margin: 20px auto;*/
+  margin-bottom: 50px;
 }
-.main .main-content .content-bottom .weather-list .active {
+.main .main-content .content-bottom .weather-list .tab-active {
   background-color: #e3edef;
 }
 .main .main-content .content-bottom .weather-list .list-item {

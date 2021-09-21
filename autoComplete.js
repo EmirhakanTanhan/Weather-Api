@@ -17,7 +17,6 @@ const createAutoComplete = ({inputValue}) => {
 
     const onInput = async (event) => {
         const items = await fetchCityNames(event.target.value);
-        console.log(items);
 
         results.innerHTML = '';
         dropdown.classList.add('is-active');
@@ -35,7 +34,6 @@ const createAutoComplete = ({inputValue}) => {
 
                 const onSelect = async (item) => {
                     const cityLocationInfo = await fetchGeoLocation(item._links['city:item'].href);
-                    console.log(cityLocationInfo);
 
                     const weatherData = await fetchWeather_OneCallApi(cityLocationInfo);
                     console.log(weatherData);

@@ -22,10 +22,10 @@
             <div class="nav-top">
                 <h1 class="brand">Weather <strong>Forecast</strong></h1>
             </div>
-            <div class="side-mid is-flex is-flex-direction-column is-align-items-center">
-                <div class="top is-flex">
+            <div id="currentComponent" class="side-mid is-flex is-flex-direction-column is-align-items-center">
+                <!--<div class="top is-flex">
                     <div class="img">
-                        <img src="./doc/weatherIcons/Drizzle.png" alt=""/>
+                        <img src="./doc/weatherIcons/Drizzle.png"/>
                     </div>
                     <div class="date">
                         <h1 class="is-size-3">Today</h1>
@@ -55,7 +55,7 @@
                         <p class="middle-dot">&#9679</p>
                         <p style="justify-self: left">Sunset 20:15</p>
                     </div>
-                </div>
+                </div>-->
             </div>
             <div class="side-bottom">
                 <canvas id="weatherChart" width="450" height="130"></canvas>
@@ -81,57 +81,16 @@
             </div>
             <div class="content-bottom">
                 <div id="tabContent" class="weather-list">
-                    <!--<a class="list-item active">
-                        <p>Sunday</p>
-                        <p class="humidity"><img src="doc/other/drop2-24px.png" alt=""> 54%</p>
-                        <p class="weather-icon"><img class="sunny" src="doc/weatherIcons/Mostly%20Sunnymdpi.png" alt=""></p>
-                        <p>17 Co -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; 28 Co</p>
-                    </a>
-                    <a class="list-item">
-                        <p>Monday</p>
-                        <p class="humidity"><img src="doc/other/drop2-24px.png" alt=""> 54%</p>
-                        <p class="weather-icon"><img class="sunny" src="doc/weatherIcons/Mostly%20Sunnymdpi.png" alt=""></p>
-                        <p>17 Co -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; 28 Co</p>
-                    </a>
-                    <a class="list-item">
-                        <p>Tuesday</p>
-                        <p class="humidity"><img src="doc/other/drop2-24px.png" alt=""> 54%</p>
-                        <p class="weather-icon"><img class="sunny" src="doc/weatherIcons/Mostly%20Sunnymdpi.png" alt=""></p>
-                        <p>17 Co -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; 28 Co</p>
-                    </a>
-                    <a class="list-item">
-                        <p>Wednesday</p>
-                        <p class="humidity"><img src="doc/other/drop2-24px.png" alt=""> 54%</p>
-                        <p class="weather-icon"><img class="sunny" src="doc/weatherIcons/Mostly%20Sunnymdpi.png" alt=""></p>
-                        <p>17 Co -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; 28 Co</p>
-                    </a>
-                    <a class="list-item">
-                        <p>Thursday</p>
-                        <p class="humidity"><img src="doc/other/drop2-24px.png" alt=""> 54%</p>
-                        <p class="weather-icon"><img class="cloud" src="doc/weatherIcons/Fogmdpi.png" alt=""></p>
-                        <p>17 Co -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; 28 Co</p>
-                    </a>
-                    <a class="list-item">
-                        <p>Friday</p>
-                        <p class="humidity"><img src="doc/other/drop2-24px.png" alt=""> 54%</p>
-                        <p class="weather-icon"><img class="cloud" src="doc/weatherIcons/Blizzardmdpi.png" alt=""></p>
-                        <p>17 Co -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; 28 Co</p>
-                    </a>
-                    <a class="list-item">
-                        <p>Saturday</p>
-                        <p class="humidity"><img src="doc/other/drop2-24px.png" alt=""> 54%</p>
-                        <p class="weather-icon"><img class="cloud" src="doc/weatherIcons/Blizzardmdpi.png" alt=""></p>
-                        <p>17 Co -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45; 28 Co</p>
-                    </a>-->
+
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<script src="chart.js"></script>
 <script src="utils.js"></script>
 <script src="autoComplete.js"></script>
+<script src="chart.js"></script>
 <script src="index.js"></script>
 </body>
 </html>
