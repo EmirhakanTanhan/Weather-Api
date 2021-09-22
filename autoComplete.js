@@ -15,6 +15,24 @@ const createAutoComplete = ({inputValue}) => {
     const dropdown = document.querySelector('.dropdown');
     const results = document.querySelector('.results');
 
+    const onSelect = async (item) => {
+        const cityLocationInfo = await fetchGeoLocation(item._links['city:item'].href);
+
+        const weatherData = await fetchWeather_OneCallApi(cityLocationInfo);
+        console.log(weatherData);
+
+        renderTabComponent(weatherData);
+    }
+
+    const onInit = async () => {
+        const userLocationInfo = await fetchClientLocation();
+
+        const weatherData = await fetchWeather_OneCallApi(userLocationInfo);
+        console.log(weatherData);
+
+        renderTabComponent(weatherData);
+    }
+
     const onInput = async (event) => {
         const items = await fetchCityNames(event.target.value);
 
@@ -31,22 +49,14 @@ const createAutoComplete = ({inputValue}) => {
                 searchBar.value = inputValue(item);
                 dropdown.classList.remove('is-active');
 
-                const onSelect = async (item) => {
-                    const cityLocationInfo = await fetchGeoLocation(item._links['city:item'].href);
-
-                    const weatherData = await fetchWeather_OneCallApi(cityLocationInfo);
-                    console.log(weatherData);
-
-                    renderTabComponent(weatherData)
-                }
-
-
                 onSelect(item);
             });
 
             results.appendChild(option);
         });
     };
+
+    onInit();
 
     searchBar.addEventListener('input', debounce(onInput, 500));
 

@@ -38,8 +38,26 @@ const fetchWeather_OneCallApi = async (cityLocation) => {
         }
     });
 
+    if (cityLocation.cityName) {
+        response.data.cityName = cityLocation.cityName;
+    }
+
     return response.data
 };
+
+const fetchClientLocation = async () => {
+    const response = await axios.get('https://ipapi.co/json/');
+    console.log(response)
+    const cityName = response.data.region;
+    const latitude = response.data.latitude;
+    const longitude = response.data.longitude;
+
+    return {
+        cityName,
+        latitude,
+        longitude
+    }
+}
 
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
