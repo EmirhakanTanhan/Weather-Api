@@ -26,6 +26,7 @@ const createAutoComplete = ({inputValue}) => {
 
     const onInit = async () => {
         const userLocationInfo = await fetchClientLocation();
+        console.log('fetchClient');
 
         const weatherData = await fetchWeather_OneCallApi(userLocationInfo);
         console.log(weatherData);

@@ -38,25 +38,25 @@ const fetchWeather_OneCallApi = async (cityLocation) => {
         }
     });
 
-    if (cityLocation.cityName) {
-        response.data.cityName = cityLocation.cityName;
-    }
+    if (cityLocation.current_country) response.data.current_country = cityLocation.current_country;
+    if (cityLocation.current_city) response.data.current_city = cityLocation.current_city;
+    if (cityLocation.current_region) response.data.current_region = cityLocation.current_region;
 
     return response.data
 };
 
 const fetchClientLocation = async () => {
-    const response = await axios.get('https://ipapi.co/json/');
+    const response = await axios.get('http://www.geoplugin.net/json.gp');
+
     console.log(response)
-    const cityName = response.data.region;
-    const latitude = response.data.latitude;
-    const longitude = response.data.longitude;
 
     return {
-        cityName,
-        latitude,
-        longitude
-    }
+        'current_city': response.data.geoplugin_city,
+        'current_region': response.data.geoplugin_region,
+        'current_country': response.data.geoplugin_countryName,
+        'latitude': Number(response.data.geoplugin_latitude),
+        'longitude': Number(response.data.geoplugin_longitude),
+    };
 }
 
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
