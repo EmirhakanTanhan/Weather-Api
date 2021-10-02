@@ -19,9 +19,13 @@ const createAutoComplete = ({inputValue}) => {
         const cityLocationInfo = await fetchGeoLocation(item._links['city:item'].href);
 
         const weatherData = await fetchWeather_OneCallApi(cityLocationInfo);
+        console.log('weather')
         console.log(weatherData);
 
         renderTabComponent(weatherData);
+
+        const cityImage = await fetchCityImage(cityLocationInfo);
+        renderImageComponent(cityImage, weatherData);
     }
 
     const onInit = async () => {
@@ -32,6 +36,9 @@ const createAutoComplete = ({inputValue}) => {
         console.log(weatherData);
 
         renderTabComponent(weatherData);
+
+        const cityImage = await fetchCityImage(userLocationInfo);
+        renderImageComponent(cityImage, weatherData);
     }
 
     const onInput = async (event) => {

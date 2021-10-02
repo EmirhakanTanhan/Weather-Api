@@ -1,3 +1,7 @@
+/*import * as cloudinary from "cloudinary-core";
+
+const cl = new cloudinary.Cloudinary({cloud_name: "weather-cities-cropping", secure: true});*/
+
 const debounce = (func, delay = 1000) => {
     let timeOutId;
 
@@ -48,8 +52,6 @@ const fetchWeather_OneCallApi = async (cityLocation) => {
 const fetchClientLocation = async () => {
     const response = await axios.get('http://www.geoplugin.net/json.gp');
 
-    console.log(response)
-
     return {
         'current_city': response.data.geoplugin_city,
         'current_region': response.data.geoplugin_region,
@@ -57,6 +59,17 @@ const fetchClientLocation = async () => {
         'latitude': Number(response.data.geoplugin_latitude),
         'longitude': Number(response.data.geoplugin_longitude),
     };
+}
+
+const fetchCityImage = async (cityLocation) => {
+    const response = await axios.get('https://weather-emirhakan-com.herokuapp.com/api/v1/places', {
+        params: {
+            lat: cityLocation.latitude.toFixed(2),
+            long: cityLocation.longitude.toFixed(2),
+        }
+    });
+
+    return response.data;
 }
 
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -134,10 +147,14 @@ const weatherCases = {
 }
 
 const renderTabComponent = (weatherData) => {
-    const root = document.querySelector('#tabContent');
-    const inputValue = document.querySelector('#weatherSearch').value;
+    const root = document.querySelector('#tabComponent');
+    let inputValue = document.querySelector('#weatherSearch').value;
 
-    console.log(weatherData.daily)
+    if (inputValue.length === 0 && weatherData.current_country) {
+        if (weatherData.current_city) inputValue = weatherData.current_city;
+        if (weatherData.current_region) inputValue += ', ' + weatherData.current_region + ', ';
+        inputValue += weatherData.current_country;
+    }
 
     root.innerHTML = `
         ${weatherData.daily.map((item, index) => {
@@ -327,3 +344,19 @@ const renderChartComponent = (weatherData, tabNum) => {
         }
     });
 };
+
+const renderImageComponent = (image, weatherData) => {
+    const root = document.querySelector('#imageComponent');
+    let inputValue = document.querySelector('#weatherSearch').value;
+
+    if (inputValue.length === 0 && weatherData.current_country) {
+        if (weatherData.current_city) inputValue = weatherData.current_city;
+        if (weatherData.current_region) inputValue += ', ' + weatherData.current_region + ', ';
+        inputValue += weatherData.current_country;
+    }
+
+    root.innerHTML = `
+        <img src="${image}">
+        <h2 class="is-centered">${inputValue}</h2>
+    `
+}

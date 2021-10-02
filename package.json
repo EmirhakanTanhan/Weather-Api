@@ -7,9 +7,7 @@
   "directories": {
     "doc": "doc"
   },
-  "scripts": {
-
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/EmirhakanTanhan/Weather-Api.git"
@@ -22,6 +20,8 @@
   "homepage": "https://github.com/EmirhakanTanhan/Weather-Api#readme",
   "dependencies": {
     "bulma": "^0.9.3",
-    "chart.js": "^3.5.0"
-  }
+    "chart.js": "^3.5.0",
+    "cloudinary-core": "^2.11.4"
+  },
+  "devDependencies": {}
 }

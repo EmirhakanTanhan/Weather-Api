@@ -11,5 +11,7 @@
     <orderEntry type="library" name="Chart.js" level="application" />
     <orderEntry type="library" name="5b41b8a5c6" level="application" />
     <orderEntry type="library" name="axios" level="application" />
+    <orderEntry type="library" name="fetch-jsonp" level="application" />
+    <orderEntry type="library" name="api" level="application" />
   </component>
 </module>
