@@ -282,7 +282,7 @@ const renderChartComponent = (weatherData, tabNum) => {
     `
     const chart = document.getElementById('weatherChart').getContext('2d');
 
-    let weatherChart = new Chart(chart, {
+    new Chart(chart, {
         type: 'line',
         data: {
             labels: labels,
